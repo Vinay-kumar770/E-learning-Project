@@ -143,6 +143,11 @@ app.use('/images',express.static(path.join(__dirname, 'images')));
 app.use('/videos',express.static(path.join(__dirname, 'videos')));
 app.use('/Files',express.static(path.join(__dirname,'Files')));
 
+app.use(express.json());
+const _dirname=path.dirname("")
+const buildpath=path.join(_dirname,"../Front-end/build")
+app.use(express.static(buildpath));
+
 app.use((req, res, next) =>{  // To remove CROS (cross-resource-origin-platform) problem 
   res.setHeader('Access-Control-Allow-Origin',"*"); // to allow all client we use *
   res.setHeader('Access-Control-Allow-Methods',"OPTIONS,GET,POST,PUT,PATCH,DELETE"); //these are the allowed methods 
